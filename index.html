@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+  <!--<![endif]-->
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <!--[if lt IE 7]>
+      <p class="browsehappy">
+        You are using an <strong>outdated</strong> browser. Please
+        <a href="#">upgrade your browser</a> to improve your experience.
+      </p>
+    <![endif]-->
+    <h1 class="main-header">
+      Lease Cost Calculator
+    </h1>
+    <form id="payment-form">
+      <div class="input-container">
+        <label for="msrp">Vehicle MSRP ($)</label>
+        <input type="text" name="msrp" id="msrp" />
+      </div>
+      <div class="input-container">
+        <label for="capcost">Capitalized Cost ($)</label>
+        <input type="text" name="capcost" id="capcost" />
+      </div>
+      <div class="input-container">
+        <label for="residualpercent">Residual Value Percent</label>
+        <input type="text" name="residualpercent" id="residualpercent" />
+      </div>
+      <div class="input-container">
+        <label for="months">Lease Term in Months</label>
+        <input type="text" name="months" id="months" />
+      </div>
+      <div class="input-container">
+        <label for="apr">APR Percent</label>
+        <input type="text" name="apr" id="apr" />
+      </div>
+      <input type="submit" value="Calculate" id="submit" />
+    </form>
+
+    <div class="summary">
+      <h2 class="payment-header">
+        Estimated Cost
+      </h2>
+      <p class="payment-estimate">$&nbsp;&nbsp;&nbsp;.&nbsp;&nbsp;/ mo.</p>
+    </div>
+    <script src="carCode.js" async defer></script>
+  </body>
+</html>

@@ -1,0 +1,66 @@
+body {
+  background-color: #99ccff;
+  background-color: #f0f8ff;
+}
+
+.main-header {
+  text-align: center;
+}
+
+#payment-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.input-container {
+  width: 50%;
+}
+
+@media only screen and (max-width: 40em) {
+  .input-container {
+    width: 90%;
+  }
+}
+
+input {
+  margin-bottom: 1rem;
+  margin-top: 0.4rem;
+  width: 100%;
+  padding: 0.3rem;
+  border-radius: 0.5rem;
+  background: #ddccff;
+  border: 1px solid #c777ff;
+  background-color: #f0f8ff;
+  border: 1px solid #121212;
+}
+
+label {
+}
+
+#submit {
+  width: 50%;
+  background-color: #c777ff;
+  background-color: #121212;
+  color: #f0f8ff;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+}
+
+.summary {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.payment-header {
+  text-decoration: underline;
+  margin-bottom: 1rem;
+  margin-top: 2rem;
+  padding: 0;
+}
+
+.payment-estimate {
+  font-size: 3rem;
+  margin: 0;
+}

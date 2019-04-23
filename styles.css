@@ -1,5 +1,4 @@
 body {
-  background-color: #99ccff;
   background-color: #f0f8ff;
 }
 
@@ -29,22 +28,8 @@ input {
   width: 100%;
   padding: 0.3rem;
   border-radius: 0.5rem;
-  background: #ddccff;
-  border: 1px solid #c777ff;
   background-color: #f0f8ff;
   border: 1px solid #121212;
-}
-
-label {
-}
-
-#submit {
-  width: 50%;
-  background-color: #c777ff;
-  background-color: #121212;
-  color: #f0f8ff;
-  padding: 0.5rem;
-  border-radius: 0.5rem;
 }
 
 .summary {

@@ -89,6 +89,7 @@ class leaseCalculator {
     );
   }
 
+  // only call getPayment if all this.currValues are valid number strings
   getPayment() {
     var { msrp, capcost, residualpercent, months, apr } = this.currValues;
     [msrp, capcost, residualpercent, months, apr] = [
@@ -102,8 +103,9 @@ class leaseCalculator {
     });
 
     var cost = this.payment(msrp, capcost, residualpercent, months, apr);
-    cost = Math.round(cost, 2);
+    cost = cost.toFixed(0);
 
+    // Update monthly payment display to new cost
     document.querySelector(".payment-estimate").innerHTML = `$${cost} / mo.`;
   }
 }

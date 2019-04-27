@@ -7,13 +7,14 @@ class leaseCalculator {
     this.months = document.querySelector("#months");
     this.apr = document.querySelector("#apr");
     this.currValues = {
-      msrp: "",
-      capcost: "",
-      residualpercent: "",
-      months: "",
-      apr: ""
+      msrp: this.initStateFromStorage("msrp"),
+      capcost: this.initStateFromStorage("capcost"),
+      residualpercent: this.initStateFromStorage("residualpercent"),
+      months: this.initStateFromStorage("months"),
+      apr: this.initStateFromStorage("apr")
     };
     this.events();
+    this.validateAndUpdate();
   }
 
   events() {
@@ -25,9 +26,17 @@ class leaseCalculator {
       this.months,
       this.apr
     ].forEach(function(input) {
-      input.oninput = that.validateAndUpdate.bind(that);
+      input.oninput = that.onInput.bind(that);
     });
     this.form.onsubmit = this.onFormSubmit;
+  }
+
+  initStateFromStorage(item) {
+    var value = localStorage.getItem(item) || "";
+    if (value) {
+      this[item].value = value;
+    }
+    return value;
   }
 
   onFormSubmit(e) {
@@ -35,19 +44,25 @@ class leaseCalculator {
     return false;
   }
 
-  validateAndUpdate(e) {
+  onInput(e) {
     var currValue = e.target.value;
     var currAttr = e.target.getAttribute("id");
 
     if (!/^\d*([.]\d?\d?)?$/gm.test(currValue)) {
       // If new value is not a valid number, set input back to its previous value (don't update to new value)
       e.target.value = this.currValues[currAttr];
+      localStorage.setItem(currAttr, this.currValues[currAttr]);
       return;
     }
 
     // If new value is a valid number, set currValue to new number string
     this.currValues[currAttr] = currValue;
+    localStorage.setItem(currAttr, currValue);
 
+    this.validateAndUpdate();
+  }
+
+  validateAndUpdate() {
     // Check that all inputs are valid numbers
     var that = this;
     var allValid = Object.keys(this.currValues).every(function(key) {
@@ -56,7 +71,7 @@ class leaseCalculator {
 
     // If all inputs are valid, get payment and update
     if (allValid) {
-      this.getPayment();
+      this.updatePayment();
     }
     // If not all inputs are valid, reset displayed payment estimate to N/A
     else {
@@ -89,8 +104,8 @@ class leaseCalculator {
     );
   }
 
-  // only call getPayment if all this.currValues are valid number strings
-  getPayment() {
+  // only call updatePayment if all this.currValues are valid number strings
+  updatePayment() {
     var { msrp, capcost, residualpercent, months, apr } = this.currValues;
     [msrp, capcost, residualpercent, months, apr] = [
       msrp,
